@@ -1,0 +1,18 @@
+
+<h1>Create Tamagotchi</h1>
+
+<p>Here are all of your tamagotchi:</p>
+
+<ul>
+  <% @all_tamagotchi.each() do |your_tamagotchi| %>
+    <li><a href="play/<%= your_tamagotchi.id() %>"><%= your_tamagotchi.name() %></a></li>
+  <% end %>
+</ul>
+
+<p>Create a new tamagotchi:</p>
+
+<form action="/tamagotchi" method="post">
+  <label for="name">Tamagotchi name</label>
+  <input id="name" name="name" type="text">
+  <button type="submit">Add Tamagotchi</button>
+</form>

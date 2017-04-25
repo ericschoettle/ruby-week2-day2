@@ -1,0 +1,14 @@
+<h1>Play with <%= @tamagotchi.name() %></h1>
+
+<h3>Your food <%= @tamagotchi.food_level().round(2) %></h3>
+<h3>Your rest <%= @tamagotchi.rest_level().round(2) %></h3>
+<h3>Your play <%= @tamagotchi.play_level().round(2) %></h3>
+
+<form action="/play/<%= @tamagotchi.id() %>" method="post">
+  <button type="submit" value="feed" name="commit">Feed</button>
+  <button type="submit" value="play" name="commit">Play</button>
+  <button type="submit" value="rest" name="commit">Rest</button>
+  <button type="submit" value="alive" name="commit">Alive?</button>
+</form>
+
+<p><a href="/" >Back</a></p>
