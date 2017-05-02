@@ -1,15 +1,18 @@
 require("sinatra")
 require("sinatra/reloader")
 also_reload("lib/**/*.rb")
-require("./lib/Tamagotchi")
+require("./lib/task")
+require("pg")
+
+DB = PG.connect({:dbname => "to_do"})
 
 get("/") do
-  @tamagotchi = Tamagotchi.display_all()
+  @task = Task.all()
   erb(:index)
 end
 
 post("/tasks") do
-  place = Tamagotchi.new(params.fetch("description"))
-  place.save()
+  task = Task.new(params.fetch("description"))
+  task.save()
   erb(:success)
 end
